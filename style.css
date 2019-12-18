@@ -1,0 +1,52 @@
+.wrapper{
+    height:150px;
+    background-color:#ff8c00;
+}
+
+h1{
+    color:white;
+    font-size:50px;
+    padding-right: 500px;
+}
+
+.Kakeibo{
+    float:left;
+}
+
+.menu{
+    float:right;
+    font-size:25px;
+    height:100px;
+    margin-left:10px;
+    padding-bottom:5px;
+}
+
+ul.menu{
+    width:500px;
+}
+
+.btn-gradient-3d-orange {
+    display: inline-block;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    border-radius: 4px;
+    color: #ffffff;
+    background-image: linear-gradient(45deg, #FFC107 0%, #ff8b5f 100%);
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
+    border-bottom: solid 3px #c58668;
+    width:100px;
+    height:40px;
+    text-align: center;
+  }
+  
+  .btn-gradient-3d-orange:active {
+    -webkit-transform: translateY(4px);
+    transform: translateY(4px);
+    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);
+    border-bottom: none;
+  }
+
+  ul {
+    list-style: none;
+  }
+  
