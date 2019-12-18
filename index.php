@@ -8,7 +8,6 @@
 </head>
 
 <body>
-  <!--サーバーのシステムを使ってログインシステムを作成 -->
   <header>
     <?php require_once 'header.php' ?>
   </header>
@@ -17,21 +16,17 @@
       <?php
       if(isset($_POST["addjudge"])){
         if($_POST["addjudge"] == 1){
-          echo "入ってます1";
           $title = "'".$_POST['title']."'";
           $price = $_POST['price'];
           $action_type = $_POST['action_type'];
-          $registered_at = $_POST['year']."-".$_POST['month']."-".$_POST['day'];
+          $registered_at = "'".$_POST['year']."-".$_POST['month']."-".$_POST['day']."'";
           $created_at = "'".date("Y-m-d H:i:s")."'";
           $updated_at = "'".date("Y-m-d H:i:s")."'";
-
-          echo "入ってます2";
           $mysqli = new mysqli('localhost', 'kuragane', 'VVmmjcU6TYTKJLQJ', 'Account_book');
           if($mysqli->connect_error){
             echo $mysqli->connect_error;
           }
           else{
-            echo "処理入った";
             $mysqli->set_charset("utf-8");
             $sql = "INSERT INTO data (title, price, action_type, registered_at, created_at, updated_at) VALUES ($title, $price, $action_type, $registered_at, $created_at, $updated_at)";
             echo '<script>';
@@ -62,12 +57,6 @@
 
       echo "家計簿にデータを追加しました";//javascriptで実装！
     }
-    else{
-      echo "1が入ってない";
-    }
-  }
-  else{
-    echo "GETされてない";
   }
   ?>
 </div>
