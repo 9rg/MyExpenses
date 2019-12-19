@@ -15,6 +15,12 @@
     <div class="addjudger">
       <?php
       if(isset($_POST["addjudge"])){
+        $title = "'".$_POST['title']."'";
+        $price = $_POST['price'];
+        $action_type = $_POST['action_type'];
+        $registered_at = "'".$_POST['year']."-".$_POST['month']."-".$_POST['day']."'";
+        $created_at = "'".date("Y-m-d H:i:s")."'";
+        $updated_at = "'".date("Y-m-d H:i:s")."'";
         if($_POST["addjudge"] == 1){
           $title = "'".$_POST['title']."'";
           $price = $_POST['price'];
@@ -53,8 +59,24 @@
           $stmt->close();//stmtクラスを閉じる
           $mysqli->close();//データベースとの接続を閉じる
           */
-
           echo "家計簿にデータを追加しました";//javascriptで実装！
+        }
+        else if($_POST['addjudge'] == 2){
+          $id = $_POST['id'];
+          echo "2番パターン入りました";
+          $mysqli = new mysqli('localhost', 'kuragane', 'VVmmjcU6TYTKJLQJ', 'Account_book');
+          if($mysqli->connect_error){
+            echo $mysqli->connect_error;
+          }
+          else{
+            $mysqli->set_charset("utf-8");
+            $sql = "UPDATE data SET title = $title, price = $price, action_type = $action_type, registered_at = $registered_at, updated_at = $updated_at WHERE id = $id";
+            echo '<script>';
+            echo 'console.log("発行されているSQL文:'. $sql .'");';
+            echo '</script>';
+            $mysqli->query($sql);
+          }
+          $mysqli->close();
         }
       }
       ?>

@@ -31,7 +31,7 @@
       }
       else{
         $mysqli->set_charset("utf-8");
-        $sql = "SELECT * FROM data";
+        $sql = "SELECT * FROM data ORDER BY registered_at ASC";
         if($res = $mysqli->query($sql)){
           require "classforlist.php";
           while($row = $res->fetch_assoc()){

@@ -27,7 +27,7 @@ class Historydata {
     echo "<div class='contents_container'>";
     echo "<div>{$this->date} {$this->action_type}¥{$this->price} {$this->title}</div>";
     echo "<div class='buttonswrapper'>";
-    echo "<form action='edit.php' type='post'><input type='hidden' name='id' value='".$id."'><input type='submit' value='編集' name='submit'></form>";
+    echo "<form action='edit.php' method='post'><input type='hidden' name='id' value='".$this->id."'><input type='hidden' name='date' value='".$this->date."'><input type='hidden' name='action_type' value='".$this->action_type."'><input type='hidden' name='price' value='".$this->price."'><input type='hidden' name='title' value='".$this->title."'><input type='submit' value='編集' name='submit'></form>";
     //以下、削除ボタンを実装
     echo "</div></div><br>";
   }
