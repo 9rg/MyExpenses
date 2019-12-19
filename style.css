@@ -1,16 +1,24 @@
 .wrapper{
-    height:150px;
+    height: 150px;
     background-color:#ff8c00;
 }
 
 h1{
     color:white;
-    font-size:50px;
-    padding-right: 500px;
+    font-size: 3vw;
+    line-height: 120px;
+    margin-left: 5%;
+}
+
+.monthDisplayer h2{
+  font-size: 2.5vw;
 }
 
 .Kakeibo{
     float:left;
+    width: 50%;
+    height: 150px;
+
 }
 
 .menu{
@@ -22,7 +30,8 @@ h1{
 }
 
 ul.menu{
-    width:500px;
+    width:15%;
+    line-height: 150px;
 }
 
 .btn-gradient-3d-orange {
@@ -38,7 +47,7 @@ ul.menu{
     height:40px;
     text-align: center;
   }
-  
+
   .btn-gradient-3d-orange:active {
     -webkit-transform: translateY(4px);
     transform: translateY(4px);
@@ -49,4 +58,34 @@ ul.menu{
   ul {
     list-style: none;
   }
-  
+
+  /*///////////////////////////////*/
+  /*         list.php              */
+  /*///////////////////////////////*/
+
+.listwrapper {
+  margin-left: 10%;
+}
+
+.contents_container {
+  height: 50px;
+}
+
+.contentswrapper {
+  font-size: 2vw;
+  float:left;
+  max-width: 70%;
+}
+
+  .buttonswrapper {
+    float: right;
+    margin-right: 10%;
+  }
+
+.editform {
+  display: inline-block;
+}
+
+  .deleteform {
+    display: inline-block;
+  }

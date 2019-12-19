@@ -25,10 +25,14 @@ class Historydata {
   function show() {
     //出力
     echo "<div class='contents_container'>";
-    echo "<div>{$this->date} {$this->action_type}¥{$this->price} {$this->title}</div>";
+    //メインレコードコンテンツ
+    echo "<div class='contentswrapper'>{$this->date} {$this->action_type}¥{$this->price} {$this->title}</div>";
+    //編集および削除ボタンノエリア
     echo "<div class='buttonswrapper'>";
-    echo "<form action='edit.php' method='post'><input type='hidden' name='id' value='".$this->id."'><input type='hidden' name='date' value='".$this->date."'><input type='hidden' name='action_type' value='".$this->action_type."'><input type='hidden' name='price' value='".$this->price."'><input type='hidden' name='title' value='".$this->title."'><input type='submit' value='編集' name='submit'></form>";
-    //以下、削除ボタンを実装
+    //編集ボタン
+    echo "<form action='edit.php' method='post' class='editform'><input type='hidden' name='id' value='$this->id'><input type='hidden' name='date' value='$this->date'><input type='hidden' name='action_type' value='$this->action_type'><input type='hidden' name='price' value='$this->price'><input type='hidden' name='title' value='$this->title'><input type='submit' value='編集' name='submit'></form>";
+    //削除ボタン
+    echo "<form action='history.php' method='post' class='deleteform'><input type='hidden' name='id' value='$this->id'><input type='hidden' name='deletejudge' value=1><input type='submit' value='削除' name='submit'></form>";
     echo "</div></div><br>";
   }
 }
