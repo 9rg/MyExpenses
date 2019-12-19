@@ -15,8 +15,11 @@
     <div class="monthDisplayer">
       <!-- ボタン1 -->
       <?php
+      /*
       $month = date('m');
       echo $month."月の家計簿";
+      */
+      echo "家計簿";
       ?>
       <!-- ボタン2 -->
     </div>
@@ -30,12 +33,10 @@
         $mysqli->set_charset("utf-8");
         $sql = "SELECT * FROM data";
         if($res = $mysqli->query($sql)){
+          require "classforlist.php";
           while($row = $res->fetch_assoc()){
-            $orgdata = strtotime($row['registered_at']);
-            $date = date('n/j', $orgdata);
-            $price = $row['price'];
-            $title = $row['title'];
-            echo "<p>".$date." ¥".$price." ".$title."</p>";
+            $data = new Historydata($row['id'], $row['registered_at'], $row['action_type'], $row['price'], $row['title']);
+            $data->show();
           }
         }
       }
