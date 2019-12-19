@@ -18,7 +18,7 @@
     <!-- menu -->
     <div class="right-wrapper">
       <ul class="menu">
-        <li><button type="button" class="btn-gradient-3d-orange" onclick="location.href='index.php'">HOME</a></li>
+        <li><button type="button" class="btn-gradient-3d-orange" onclick="location.href='index.php'">HOME</button></li>
       </ul>
     </div>
     <!-- /menu -->

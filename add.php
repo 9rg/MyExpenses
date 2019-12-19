@@ -90,11 +90,11 @@
           <input type="number" name="price" class="price" value="">
         </p>
         <p>
-          支出<input type="radio" name="action_type" value="1">
-          収入<input type="radio" name="action_type" value="2">
+          支出<input type="radio" name="action_type" class="action_type" value="1">
+          収入<input type="radio" name="action_type" class="action_type" value="2">
         </p>
         <input type="hidden" name="addjudge" value=1>
-        <input type="submit" name="submit" value="家計簿に追加" class="submit" onclick="return check()">
+        <input type="submit" name="submit" value="家計簿に追加" class="mainbutton" onclick="return check()">
       </form>
     </div>
   </main>

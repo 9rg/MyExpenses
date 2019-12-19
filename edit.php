@@ -102,7 +102,7 @@
         </p>
         <input type="hidden" name="id" <?php echo "value='$id'"?>>
         <input type="hidden" name="addjudge" value=2>
-        <input type="submit" name="submit" value="更新" class="submit" onclick="return check()">
+        <input type="submit" name="submit" value="更新" class="mainbutton" onclick="return check()">
       </form>
     </div>
   </main>

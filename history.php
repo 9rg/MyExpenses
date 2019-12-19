@@ -70,7 +70,7 @@
           while($row = $res->fetch_assoc()){
             $data = new Historydata($row['id'], $row['registered_at'], $row['action_type'], $row['price'], $row['title']);
             $data->show();
-            echo "<input type='submit' value='削除' name='submit' onclick='return check()'></form>";
+            echo "<input type='submit' value='削除' name='submit' class='subbutton' onclick='return check()'></form>";
             echo "</div></div><br>";
             echo "<hr>";
           }
