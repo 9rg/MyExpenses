@@ -5,6 +5,17 @@
   <meta name="viewpoint" user-scalable=no>
   <title>My家計簿</title>
   <link href="style.css" rel="stylesheet">
+  <script>
+  function check(){
+    var result = window.confirm('本当にこの記録を削除しますか？');
+    if(result){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
+  </script>
 </head>
 
 <body>
@@ -12,14 +23,36 @@
     <?php require_once 'header.php' ?>
   </header>
   <main>
+    <div class="deletejudger">
+      <?php
+      if(isset($_POST['deletejudge'])){
+        if($_POST['deletejudge'] == 1){
+          $mysqli = new  mysqli('localhost', 'kuragane', 'VVmmjcU6TYTKJLQJ', 'Account_book');
+          if($mysqli->connect_error){
+            echo $mysqli->connect_error;
+          }
+          else{
+            $mysqli->set_charset("utf-8");
+            $id = $_POST['id'];
+            $sql = "DELETE FROM data WHERE id = $id";
+            $mysqli->query($sql);
+          }
+          $mysqli->close();
+          echo "<script>";
+          echo "alert('データが正常に削除されました。');";
+          echo "</script>";
+        }
+      }
+      ?>
+    </div>
     <div class="monthDisplayer">
       <!-- ボタン1 -->
       <?php
+      echo "<h2>家計簿</h2>";
       /*
-      $month = date('m');
+      $month = date('n');
       echo $month."月の家計簿";
       */
-      echo "家計簿";
       ?>
       <!-- ボタン2 -->
     </div>
@@ -37,6 +70,9 @@
           while($row = $res->fetch_assoc()){
             $data = new Historydata($row['id'], $row['registered_at'], $row['action_type'], $row['price'], $row['title']);
             $data->show();
+            echo "<input type='submit' value='削除' name='submit' onclick='return check()'></form>";
+            echo "</div></div><br>";
+            echo "<hr>";
           }
         }
       }

@@ -5,6 +5,11 @@
   <meta name="viewpoint" user-scalable=no>
   <title>My家計簿</title>
   <link href="style.css" rel="stylesheet">
+  <script type="text/javascript">
+  function addsuccess(){
+    alert('新しい記録が家計簿に追加されました。');
+  }
+  </script>
 </head>
 
 <body>
@@ -59,11 +64,12 @@
           $stmt->close();//stmtクラスを閉じる
           $mysqli->close();//データベースとの接続を閉じる
           */
-          echo "家計簿にデータを追加しました";//javascriptで実装！
+          echo "<script>";
+          echo "addsuccess();";
+          echo "</script>";
         }
         else if($_POST['addjudge'] == 2){
           $id = $_POST['id'];
-          echo "2番パターン入りました";
           $mysqli = new mysqli('localhost', 'kuragane', 'VVmmjcU6TYTKJLQJ', 'Account_book');
           if($mysqli->connect_error){
             echo $mysqli->connect_error;
