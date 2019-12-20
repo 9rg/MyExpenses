@@ -49,15 +49,31 @@
       ?>
     </div>
     <div class="monthDisplayer">
-      <!-- ボタン1 -->
       <?php
-      echo "<h2>家計簿</h2>";
-      /*
-      $month = date('n');
-      echo $month."月の家計簿";
-      */
+      if(isset($_GET['monthselecter'])){
+        $thisyear = $_GET['yearselecter'];
+        $thismonth = $_GET['monthselecter'];
+      }
+      else{
+        $thismonth = date('n');
+        $thisyear = date('Y');
+      }
+      $lastyear = $thisyear;
+      $lastmonth = $thismonth - 1;
+      if($lastmonth < 1){
+        $lastmonth = 12;
+        $lastyear--;
+      }
+      $nextyear = $thisyear;
+      $nextmonth = $thismonth + 1;
+      if($nextmonth > 12){
+        $nextmonth = 1;
+        $nextyear++;
+      }
+      echo "<form method='GET' action='history.php' class='monthelement'><input type='submit' class='subbutton' value='".$lastyear."年".$lastmonth."月'><input type='hidden' name='monthselecter' value='$lastmonth'><input type='hidden' name='yearselecter' value='$lastyear'></form>";
+      echo "<h2 class='monthelement'>".$thismonth."月の家計簿</h2>";
+      echo "<form method='GET' action='history.php' class='monthelement'><input type='submit' class='subbutton' value='".$nextyear."年".$nextmonth."月'><input type='hidden' name='monthselecter' value='$nextmonth'><input type='hidden' name='yearselecter' value='$nextyear'></form>";
       ?>
-      <!-- ボタン2 -->
     </div>
     <div class="listwrapper">
       <?php
@@ -70,7 +86,11 @@
       }
       else{
         $mysqli->set_charset("utf-8");
-        $sql = "SELECT * FROM data ORDER BY registered_at ASC";
+        $month = $thisyear."-".$thismonth;
+        $firstDate = date('Y-m-d', strtotime('first day of ' . $month));
+        $lastDate = date('Y-m-d', strtotime('last day of ' . $month));
+        $mysqli->set_charset("utf-8");
+        $sql = "SELECT * FROM data WHERE registered_at BETWEEN '$firstDate' AND '$lastDate' ORDER BY registered_at ASC";
         if($res = $mysqli->query($sql)){
           require "classforlist.php";
           while($row = $res->fetch_assoc()){
